@@ -1,0 +1,14 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Usuarios' /}
+
+
+<h3>Listagem de Usuarios </h3>
+
+#{list items:lista, as: 'u'} 
+	<a href='@{Usuarios.editar(u.id)}'>Editar</a> 
+	<a href='@{Usuarios.deletar(u.id)}'>Deletar</a>
+	
+	${u.nome} - ${u.email} - ${u.anoNascimento} <br/>
+#{/list} <br/>
+
+<a href="@{Usuarios.form}">Cadastro de Usuarios</a>

@@ -1,0 +1,22 @@
+Usuario(agnnes):
+   nome: Agnnes Maria
+   email: agnnes19@outlook.com
+   senha: 123456
+   
+Usuario(felipe):
+   nome: Felipe Rodrigues
+   email: felipe@gmail.com
+   senha: 789101
+   
+Tarefa(ppi): 
+   titulo: Projeto de PPI
+   anotacao: Adicionar relacionamento entre entidades
+   prazo: 2021-03-11
+   usuario_id: 1
+   
+Tarefa(qualidade_de_vida):
+   titulo: Projeto Dança e Ritmo na Terra do Sal
+   anotacao: Concluir o projeto até a proxima semana.
+   prazo: 2021-02-08
+   usuario_id: 2
+   

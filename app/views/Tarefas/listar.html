@@ -1,0 +1,17 @@
+#{extends 'main.html' /} 
+#{set title:'Listagem de Tarefas' /} 
+
+
+#{list items:lista, as: 't'}
+
+<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+	<div class="card-header">${t.titulo}</div>
+	<div class="card-body">
+		<p class="card-text">${t.anotacao}.</p>
+		<h4 class="card-text">${t.prazo}</h4>
+		<a class="btn btn-dark btn-sm" href='@{Tarefas.editar(t.id)}' role="button">Editar</a>
+		<a class="btn btn-dark btn-sm" href='@{Tarefas.deletar(t.id)}' role="button">Deletar</a>
+	</div>
+</div>
+
+#{/list}
