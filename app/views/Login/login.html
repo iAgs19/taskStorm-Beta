@@ -1,14 +1,6 @@
 #{extends 'mainLogin.html' /} #{set title:'Login' /}
 <meta charset="utf-8">
 
-#{if flash.error}
-
-<div class="alert alert-danger" role="alert">
-  ${flash.error.raw()}
-</div>
-
-#{/if}
-
 <form action="@{Login.autenticar}" method="POST">
 	<div class="input-group custom">
 		<input type="text" class="form-control form-control-lg"

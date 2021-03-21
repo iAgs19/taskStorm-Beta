@@ -1,7 +1,11 @@
+
 package controllers;
 
 import models.Usuario;
+import play.libs.Crypto;
+import play.mvc.Before;
 import play.mvc.Controller;
+import play.mvc.With;
 
 public class Login extends Usuarios {
 
@@ -9,27 +13,22 @@ public class Login extends Usuarios {
 			render();
 		}
 		
-		public static void autenticar(String email, String senha, Usuario usu) {
+		public static void autenticar(String email, String senha) {
 			
-			Usuario usuario = Usuario.find("email = ? and senha = ?", email, senha).first();
+			Usuario usuario = Usuario.find("email = ? and senha = ?", email, Crypto.passwordHash(senha)).first();
 			
-			if (usu == null) {
-				login();
+			if (usuario == null) {
 				flash.error("Usuário ou senha incorretos");
+				login();
 				
 			} else {
-				session.put("usuario.email", usu.email);
-				session.put("usuario.senha", usuario.senha);
+				session.put("usuarioID", usuario.id);
+				session.put("usuarioNome", usuario.nome);
+				session.put("usuarioEmail", usuario.email);
+				session.put("usuarioSenha", usuario.senha);
 				
 				Application.index();
 			}
-			if(email.equals("admin") && senha.equals("admin") ) {
-				Application.index();
-			}
-				else{
-					flash.error("Usuário ou senha incorretos");
-					login();
-				}
 		}
 		public static void logout() {
 			session.clear();

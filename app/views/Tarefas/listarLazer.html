@@ -1,0 +1,42 @@
+#{extends 'main.html' /} #{set title:'Listagem de Tarefas' /}
+<meta charset="utf-8">
+<div class="header-left">
+	<div class="search-toggle-icon dw dw-search2"
+		data-toggle="header_search"></div>
+	<div class="header-search">
+		<form action="@{Tarefas.listar}">
+			<div class="form-group mb-0">
+				<i class="dw dw-search2 search-icon"></i> <input name="busca"
+					type="text" class="form-control search-input"
+					placeholder="Busque sua tarefa pelo título ou conteúdo">
+				<div style="float: right;">
+					<button class="btn btn-primary">Buscar</button>
+				</div>
+			</div>
+	</div>
+	</form>
+</div>
+<br />
+
+<div class="row clearfix">
+	#{list items: lista2, as: 't'}
+	<div class="col-md-4 col-sm-12 mb-30">
+		<div class="card text-white bg-success mb-3 card-box"
+			style="max-width: 18rem;">
+			<div class="card-header">${t.titulo}</div>
+			<div class="card-body">
+				<h4 class="card-text text-white">Prazo: ${t.prazo}</h4>
+				<p class="card-text">${t.anotacao}</p>
+
+				<a class="btn btn-dark btn-sm" href='@{Tarefas.editar(t.id)}'
+					role="button"><i
+					class="icone-tamanho icon-copy ion-ios-compose"></i></a> <a
+					class="btn btn-dark btn-sm" href='@{Tarefas.deletar(t.id)}'
+					role="button"><i class="icone-tamanho icon-copy ion-ios-trash"></i></a>
+
+			</div>
+		</div>
+	</div>
+
+	#{/list}
+</div>

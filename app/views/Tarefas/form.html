@@ -5,20 +5,21 @@
 <form action="@{Tarefas.salvar}" method="POST">
 
 	<input type="hidden" name="task.id" value="${task?.id}">
-	<input type="hidden" name="usu.id" value="${usu?.id}">
 	
 	<div class="form-group">
 		<label for="exampleInputTitulo"><h4 class="h4 text-blue">Título:</h4></label>
 		<input type="text" class="form-control" id="exampleInputTitulo"
 			aria-describedby="tituloHelp" placeholder="Digite o título"
-			name="task.titulo" value="${task?.titulo}">
+			name="task.titulo" value="${flash['task.titulo'] != null ? flash['task.titulo'] : task?.titulo}">
+			<span class="vermelho">#{error 'task.titulo' /}</span>  	
 	</div>
 
 	<div class="form-group">
 		<label for="exampleInputPrazo"><h4 class="h4 text-blue">Prazo:</h4></label>
 		<input type="date" class="form-control" id="exampleInputPrazo"
 			aria-describedby="prazoHelp" placeholder="___/___/___"
-			name="task.prazo" value="${task?.prazo}">
+			name="task.prazo" value="${flash['task.prazo'] != null ? flash['task.prazo'] : task?.prazo}">
+			<span class="vermelho">#{error 'task.prazo' /}</span>  
 	</div>
 
 	<h4 class="h4 text-blue">Tipo de Tarefa:</h4>
@@ -31,14 +32,31 @@
 			<option #{if task?.tipoTarefa == tipo} selected #{/if}>${tipo}</option> 
 			#{/list}
 		</select>
+		<span class="vermelho">#{error 'task.tipoTarefa' /}</span>  	
 	</div>
-
-	<h4 class="h4 text-blue">Anotação</h4>
+	
+	<h4 class="h4 text-blue">Progresso:</h4>
+	<div class="input-group mb-3">
+		<select name="task.andamentoTarefa" class="custom-select"
+			id="inputGroupSelect03"
+			aria-label="Exemplo de select com botão addon">
+			<option>Escolher...</option>
+			 #{list items: andamentoTarefas, as:'andamento'}
+			<option #{if task?.andamentoTarefa == andamento} selected #{/if}>${andamento}</option> 
+			#{/list}
+		</select>
+		<span class="vermelho">#{error 'task.andamentoTarefa' /}</span>  	
+	</div>
+	
+		<h4 class="h4 text-blue">Anotação</h4>
 	<textarea class="textarea_editor form-control border-radius-0 "
-		placeholder="Enter text ..." name="task.anotacao"
-		value="${task?.anotacao}"></textarea>
+		placeholder="Comece a digitar ..." name="task.anotacao"
+		id="anotacao">${flash['task.anotacao'] != null ? flash['task.anotacao'] : task?.anotacao}</textarea>
+		<span class="vermelho">#{error 'task.anotacao' /}</span>  
 	<br />
-
+	
+	
+		
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="input-group mb-0">

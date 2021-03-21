@@ -1,0 +1,57 @@
+#{extends 'main.html' /} 
+#{set title:'Edição de Perfil' /}
+<meta charset="utf-8">
+
+<form action="@{Usuarios.salvarEdicao}" method="POST">
+
+	<input type="hidden" name="usuLogado.id" value="${usuLogado?.id}">
+	<div class="form-group">
+		<label for="exampleInputName1">Nome:</label>
+		<input type="text"
+			class="form-control" id="exampleInputName1"
+			aria-describedby="nameHelp" placeholder="Seu nome" 
+			name="usu.nome" value="${flash['usuLogado.nome'] != null ? flash['usuLogado.nome'] : usuLogado?.nome}">
+			<span class="vermelho">#{error 'usu.nome' /}</span>  	
+	</div>
+	
+	<div class="form-group">
+		<label for="exampleInputEmail1">Email:</label><input type="email"
+			class="form-control" id="exampleInputEmail1"
+			aria-describedby="emailHelp" placeholder="Seu email" 
+			name="usu.email" value="${flash['usuLogado.email'] != null ? flash['usuLogado.email'] : usuLogado?.email}">
+			<span class="vermelho">#{error 'usu.email' /}</span>  	
+	</div>
+	
+	<div class="form-group">
+		<label for="exampleInputPassword1">Senha:</label><input
+			type="password" class="form-control" id="exampleInputPassword1"
+			placeholder="Senha" name="senha"> 
+			<span class="vermelho">#{error 'usu.senha' /}</span> 
+	</div>
+	
+	<div class="form-group">
+		<label for="exampleInputPassword1">Confirmação da senha:</label><input
+			type="password" class="form-control" id="exampleInputPassword1"
+			placeholder="Digite novamente a senha" name="usu.confirmacaoSenha"> 
+	</div>
+	
+
+	<div class="row clearfix">
+		<div class="col-sm-12">
+			<div class="input-group mb-0">
+				<!--
+											use code for form submit
+											<input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
+										-->
+				<button class="btn btn-primary" >Enviar</button>
+	
+			</br>
+			<a class="btn btn-outline-danger"
+				href="@{Usuarios.deletar}">Deletar</a>
+			<a class="btn btn-outline-primary"
+				href="@{Application.index}">Voltar</a>
+			</div>
+		</div>
+	</div>
+
+</form>

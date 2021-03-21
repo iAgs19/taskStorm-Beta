@@ -1,3 +1,8 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+validation.required=Este campo é obrigatório.
+validation.email=Insira um endereço de email válido.
+validation.unique=Este endereço de email já está cadastrado no sistema.
+
+

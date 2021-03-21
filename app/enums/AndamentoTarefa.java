@@ -1,5 +1,5 @@
 package enums;
 
 public enum AndamentoTarefa {
-	EmAndamento, Concluido
+	Iniciada, EmAndamento, Concluido
 }

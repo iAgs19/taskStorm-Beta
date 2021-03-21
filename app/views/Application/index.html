@@ -1,86 +1,95 @@
-#{extends 'main.html' /}
-#{set title:'Home' /}
+#{extends 'main.html' /} #{set title:'Home' /}
 <meta charset="utf-8">
 
 
-		<div class="pd-ltr-20">
-			<div class="card-box pd-20 height-100-p mb-30">
-				<div class="row align-items-center">
-					<div class="col-md-4">
-						<img src="@{'public/deskApp/vendors/images/banner-img.png'}" alt="">
+<div class="pd-ltr-20">
+	<div class="card-box pd-20 height-100-p mb-30">
+		<div class="row align-items-center">
+			<div class="col-md-4">
+				<img src="@{'public/deskApp/vendors/images/banner-img.png'}" alt="">
+			</div>
+			<div class="col-md-8">
+				<h4 class="font-20 weight-500 mb-10 text-capitalize">
+					Bem-Vindo Novamente!
+					<div class="weight-600 font-30 text-blue">
+						${session.get("usuarioNome")}</div>
+				</h4>
+				<p class="font-18 max-width-600">“Só existem dois dias do ano em
+					que você não pode fazer nada: um se chama ontem e outro amanhã” –
+					Dalai Lama</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xl-3 mb-30">
+			<div class="card-box bg-info height-100-p widget-style1">
+				<div class="d-flex flex-wrap align-items-center">
+					
+					<div class="icone-css text-white">
+						<div class="card-body-icon">
+							<i class="icon-copy ion-ios-paper"></i>
+							</div>
 					</div>
-					<div class="col-md-8">
-						<h4 class="font-20 weight-500 mb-10 text-capitalize">
-							Bem-Vindo Novamente! <div class="weight-600 font-30 text-blue"></div>
-						</h4>
-						<p class="font-18 max-width-600">“Só existem dois dias do ano em que você não pode fazer nada: 
-						um se chama ontem e outro amanhã” – Dalai Lama</p>
-					</div>
+					<a href=@{Tarefas.listarEscolar}>
+						<div class="widget-data text-white">
+							<!-- 	<div class="h4 mb-0 text-white">2020</div> -->
+							
+							<div class="weight-600 font-18">Escolar</div>
+						</div>
+					</a>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xl-3 mb-30">
-					<div class="card-box height-100-p widget-style1">
-						<div class="d-flex flex-wrap align-items-center">
-							<div class="progress-data">
-								<div id="chart"></div>
+		</div>
+		<div class="col-xl-3 mb-30">
+			<div class="card-box bg-warning height-100-p widget-style1">
+				<div class="d-flex flex-wrap align-items-center">
+					<div class="icone-css text-white">
+						<div class="card-body-icon">
+							<i class="icon-copy ion-ios-cart"></i>
 							</div>
-							<div class="widget-data">
-								<div class="h4 mb-0">2020</div>
-								<div class="weight-600 font-14">Escolar</div>
-							</div>
-						</div>
 					</div>
-				</div>
-				<div class="col-xl-3 mb-30">
-					<div class="card-box height-100-p widget-style1">
-						<div class="d-flex flex-wrap align-items-center">
-							<div class="progress-data">
-								<div id="chart2"></div>
-							</div>
-							<div class="widget-data">
-								<div class="h4 mb-0">400</div>
-								<div class="weight-600 font-14">Doméstico</div>
-							</div>
+					<a href=@{Tarefas.listarDomestica}>
+						<div class="widget-data text-white">
+							<!-- 								<div class="text-white h4 mb-0">400</div> -->
+							<div class="weight-600 font-18">Doméstico</div>
 						</div>
-					</div>
-				</div>
-				<div class="col-xl-3 mb-30">
-					<div class="card-box height-100-p widget-style1">
-						<div class="d-flex flex-wrap align-items-center">
-							<div class="progress-data">
-								<div id="chart3"></div>
-							</div>
-							<div class="widget-data">
-								<div class="h4 mb-0">100</div>
-								<div class="weight-600 font-14">Profissional</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-3 mb-30">
-					<div class="card-box height-100-p widget-style1">
-						<div class="d-flex flex-wrap align-items-center">
-							<div class="progress-data">
-								<div id="chart4"></div>
-							</div>
-							<div class="widget-data">
-								<div class="h4 mb-0">$6060</div>
-								<div class="weight-600 font-14">Lazer</div>
-							</div>
-						</div>
-					</div>
+					</a>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xl-8 mb-30">
-					<div class="card-box height-100-p pd-20">
-						<h2 class="h4 mb-20">Activity</h2>
-						<div id="chart5"></div>
+		</div>
+		<div class="col-xl-3 mb-30">
+			<div class="card-box bg-danger height-100-p widget-style1">
+				<div class="d-flex flex-wrap align-items-center">
+					<div class="icone-css text-white">
+						<div class="card-body-icon">
+							<i class="icon-copy ion-briefcase"></i>
+							</div>
 					</div>
+					<a href=@{Tarefas.listarProfissional}>
+						<div class="widget-data text-white">
+							<!-- 								<div class="text-white h4 mb-0">100</div> -->
+							<div class="weight-600 font-18">Profissional</div>
+						</div>
+					</a>
 				</div>
-				<div class="col-xl-4 mb-30">
-					<div class="card-box height-100-p pd-20">
-						<h2 class="h4 mb-20">Lead Target</h2>
-						<div id="chart6"></div>
+			</div>
+		</div>
+		<div class="col-xl-3 mb-30">
+			<div class="card-box bg-success height-100-p widget-style1">
+				<div class="d-flex flex-wrap align-items-center">
+					<div class="icone-css text-white">
+						<div class="card-body-icon">
+							<i class="icon-copy ion-ios-game-controller-b"></i>
+							</div>
 					</div>
+					<a href=@{Tarefas.listarLazer}>
+						<div class="widget-data text-white">
+							<!-- 								<div class="text-white h4 mb-0">$6060</div> -->
+							<div class="weight-600 font-18">Lazer</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
